@@ -6,3 +6,14 @@ export const darkTheme = createTheme({
     },
   },
 });
+
+export const createThemeStyle = (color, createTheme) => {
+  const newColor = createTheme({
+    palette: {
+      primary: {
+        main: `#${color}`,
+      },
+    },
+  });
+  return newColor;
+};

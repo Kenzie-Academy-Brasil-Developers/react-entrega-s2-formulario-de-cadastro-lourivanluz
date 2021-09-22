@@ -1,19 +1,30 @@
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
-import { Button, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 
-export const ContainerForm = styled(Paper)(() => ({
-  height: 600,
-  width: 900,
-  lineHeight: "60px",
-  background: "rgb(26,26,26)",
-  background:
-    "linear-gradient(190deg, rgba(26,26,26,1) 0%, rgba(50,54,50,1) 100%);",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  padding: "25px 15px",
-}));
+export const ContainerForm = styled(Paper)`
+  height: 600px;
+  max-width: 800px;
+  width: 90%;
+  line-height: 60px;
+  background: "rgb(26,26,26)";
+  background: linear-gradient(
+    190deg,
+    rgba(26, 26, 26, 1) 0%,
+    rgba(50, 54, 50, 1) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 15px;
+
+  form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+`;
 
 export const TextFildStyle = styled(TextField)`
   .MuiOutlinedInput-root {
