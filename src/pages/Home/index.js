@@ -19,7 +19,7 @@ export const Home = ({ isAuthorized }) => {
           <ButtonStyled onClick={() => goTo("/login")}>
             {isAuthorized ? "Logar com outra conta" : "logar"}
           </ButtonStyled>
-          <ButtonStyled onClick={() => goTo("/user")}>
+          <ButtonStyled onClick={() => goTo(`/user`)}>
             Minha página
           </ButtonStyled>
         </ThemeProvider>

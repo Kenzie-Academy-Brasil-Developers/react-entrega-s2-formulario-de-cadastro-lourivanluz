@@ -3,7 +3,7 @@ import { ContainerPage } from "../../Components/ContainerPage";
 import { NavBar } from "../../Components/NavBar";
 import { darkTheme } from "../../Style/Theme";
 import { ThemeProvider } from "@mui/material/styles";
-import { useHistory } from "react-router";
+import { useHistory, useParams } from "react-router";
 import { useState } from "react";
 import { Box } from "@mui/system";
 
@@ -34,7 +34,7 @@ export const UserPage = ({ user, isAuthorized, setIsAuthorized }) => {
         </ThemeProvider>
       </NavBar>
       <Box paddingTop="80px" fontSize="32px" color="white">
-        Bem vindo {user.name}
+        Bem vindo {`${user.name}`}
       </Box>
     </ContainerPage>
   );
