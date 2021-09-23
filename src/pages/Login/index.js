@@ -9,9 +9,11 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useHistory } from "react-router";
 import { NavBar } from "../../Components/NavBar";
+import { useState } from "react";
 
-const Login = ({ setUser, setIsAuthorized }) => {
+const Login = ({ setUser, setIsAuthorized, user }) => {
   const history = useHistory();
+  const [isCadastred, setIsCadastred] = useState(false);
 
   const formSchema = yup.object().shape({
     name: yup
@@ -22,10 +24,11 @@ const Login = ({ setUser, setIsAuthorized }) => {
     password: yup
       .string()
       .required("Senha obrigatória")
-      .matches(
-        "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$",
-        "Senha deve ter ao menos 8 digitos, 1 letra maiúscula, 1 letra minúscula, 1 número e um caracter espcial"
-      ),
+      .matches("^.{8,}$", "Senha deve ter ao menos 8 digitos")
+      .matches("[A-Z]", "Senha deve ter ao menos uma letra maiúscula")
+      .matches("[a-z]", "Senha deve ter ao menos uma letra minúscula")
+      .matches("[0-9]", "Senha deve ter ao menos um número")
+      .matches("[#?!@$%^&*-]", "Senha deve ter ao menos um caracter espcial"),
     passwordConfirm: yup
       .string()
       .oneOf([yup.ref("password"), null], "Senha não é igual"),
@@ -38,7 +41,7 @@ const Login = ({ setUser, setIsAuthorized }) => {
   } = useForm({ resolver: yupResolver(formSchema) });
 
   const mockUser = {
-    name: "lourvan luz",
+    name: "lourivan luz",
     email: "Jaja@111.com",
     password: "Jaja@111.com",
   };
@@ -52,8 +55,7 @@ const Login = ({ setUser, setIsAuthorized }) => {
       data.theme = "defult";
       setUser(data);
       setIsAuthorized(true);
-      history.push("/user");
-      console.log(data);
+      history.push(`/user/${data.name}`);
     } else {
       console.log(data, "nao cadastrado");
     }
@@ -64,7 +66,7 @@ const Login = ({ setUser, setIsAuthorized }) => {
       <NavBar>
         <ThemeProvider theme={darkTheme}>
           <ButtonStyled onClick={() => history.push("/")}>Home</ButtonStyled>
-          <ButtonStyled onClick={() => history.push("/user")}>
+          <ButtonStyled onClick={() => history.push(`user/${user.name}`)}>
             Minha página
           </ButtonStyled>
         </ThemeProvider>
@@ -104,6 +106,7 @@ const Login = ({ setUser, setIsAuthorized }) => {
               <ButtonStyled type="submit">login</ButtonStyled>
             </ThemeProvider>
           </form>
+          {}
         </Box>
       </ContainerForm>
     </ContainerPage>

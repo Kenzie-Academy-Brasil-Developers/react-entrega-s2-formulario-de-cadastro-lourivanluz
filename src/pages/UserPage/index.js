@@ -15,6 +15,7 @@ export const UserPage = ({ user, isAuthorized, setIsAuthorized }) => {
   if (!isAuthorized) {
     history.push("/login");
   }
+  const { name } = useParams();
 
   return (
     <ContainerPage color="1A1A1A" diplay="block">
@@ -33,8 +34,12 @@ export const UserPage = ({ user, isAuthorized, setIsAuthorized }) => {
           />
         </ThemeProvider>
       </NavBar>
-      <Box paddingTop="80px" fontSize="32px" color="white">
-        Bem vindo {`${user.name}`}
+      <Box padding="80px 20px" fontSize="32px" color="white">
+        <h1>Bem vindo {`${name}`}</h1>
+        <div>
+          <p>Nome de usuário:{user.name}</p>
+          <p>Email cadastrado:{user.email}</p>
+        </div>
       </Box>
     </ContainerPage>
   );

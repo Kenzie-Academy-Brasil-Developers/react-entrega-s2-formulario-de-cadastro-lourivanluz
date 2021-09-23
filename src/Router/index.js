@@ -14,9 +14,13 @@ const Router = () => {
         <Home user={user} isAuthorized={isAuthorized} />
       </Route>
       <Route path="/login">
-        <Login setUser={setUser} setIsAuthorized={setIsAuthorized} />
+        <Login
+          setUser={setUser}
+          setIsAuthorized={setIsAuthorized}
+          user={user}
+        />
       </Route>
-      <Route path="/user">
+      <Route path="/user/:name">
         <UserPage
           user={user}
           isAuthorized={isAuthorized}

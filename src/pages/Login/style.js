@@ -23,6 +23,11 @@ export const ContainerForm = styled(Paper)`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+
+    p {
+      display: block;
+      max-width: 400px;
+    }
   }
 `;
 

@@ -5,7 +5,7 @@ import { darkTheme } from "../../Style/Theme";
 import { ThemeProvider } from "@mui/material/styles";
 import { useHistory } from "react-router";
 
-export const Home = ({ isAuthorized }) => {
+export const Home = ({ user, isAuthorized }) => {
   const history = useHistory();
 
   const goTo = (path) => {
@@ -19,7 +19,7 @@ export const Home = ({ isAuthorized }) => {
           <ButtonStyled onClick={() => goTo("/login")}>
             {isAuthorized ? "Logar com outra conta" : "logar"}
           </ButtonStyled>
-          <ButtonStyled onClick={() => goTo(`/user`)}>
+          <ButtonStyled onClick={() => goTo(`/user/${user.name}`)}>
             Minha página
           </ButtonStyled>
         </ThemeProvider>
