@@ -97,6 +97,7 @@ const Login = ({ setUser, setIsAuthorized, user }) => {
               <TextFildStyle
                 label="Senha"
                 variant="outlined"
+                type="password"
                 {...register("password")}
                 error={!!errors.password}
                 helperText={errors.password?.message}
@@ -104,6 +105,7 @@ const Login = ({ setUser, setIsAuthorized, user }) => {
               <TextFildStyle
                 label="Confirmar senha"
                 variant="outlined"
+                type="password"
                 {...register("passwordConfirm")}
                 error={!!errors.passwordConfirm}
                 helperText={errors.passwordConfirm?.message}
