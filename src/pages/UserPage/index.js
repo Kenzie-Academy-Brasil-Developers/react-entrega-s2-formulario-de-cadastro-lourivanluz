@@ -4,14 +4,10 @@ import { NavBar } from "../../Components/NavBar";
 import { darkTheme } from "../../Style/Theme";
 import { ThemeProvider } from "@mui/material/styles";
 import { useHistory, useParams } from "react-router";
-import { useState } from "react";
 import { Box } from "@mui/system";
 
 export const UserPage = ({ user, isAuthorized, setIsAuthorized }) => {
   const history = useHistory();
-  const [colorTheme, seCtolorTheme] = useState("");
-  const [theme, setTheme] = useState("");
-
   if (!isAuthorized) {
     history.push("/login");
   }
@@ -25,13 +21,6 @@ export const UserPage = ({ user, isAuthorized, setIsAuthorized }) => {
           <ButtonStyled onClick={() => setIsAuthorized(false)}>
             Logout
           </ButtonStyled>
-          <ButtonStyled>Mudar Tema</ButtonStyled>
-          <input
-            type="text"
-            placeholder="color in Hex"
-            value={colorTheme}
-            onChange={(event) => seCtolorTheme(event.target.value)}
-          />
         </ThemeProvider>
       </NavBar>
       <Box padding="80px 20px" fontSize="32px" color="white">

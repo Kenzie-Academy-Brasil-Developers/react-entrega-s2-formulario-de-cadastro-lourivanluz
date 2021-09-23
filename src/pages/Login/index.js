@@ -13,7 +13,7 @@ import { useState } from "react";
 
 const Login = ({ setUser, setIsAuthorized, user }) => {
   const history = useHistory();
-  const [isCadastred, setIsCadastred] = useState(false);
+  const [showErrorCadastred, setShowErrorCadastred] = useState(false);
 
   const formSchema = yup.object().shape({
     name: yup
@@ -57,12 +57,17 @@ const Login = ({ setUser, setIsAuthorized, user }) => {
       setIsAuthorized(true);
       history.push(`/user/${data.name}`);
     } else {
-      console.log(data, "nao cadastrado");
+      setShowErrorCadastred(true);
     }
   };
 
   return (
-    <ContainerPage color="1A1A1A" display="flex">
+    <ContainerPage
+      color="1A1A1A"
+      display="flex"
+      alignItems="flex-start"
+      paddingTop="150px"
+    >
       <NavBar>
         <ThemeProvider theme={darkTheme}>
           <ButtonStyled onClick={() => history.push("/")}>Home</ButtonStyled>
@@ -72,7 +77,7 @@ const Login = ({ setUser, setIsAuthorized, user }) => {
         </ThemeProvider>
       </NavBar>
       <ContainerForm elevation={6}>
-        <Box height="80%">
+        <Box height="80%" width="100%">
           <form className="FormContainer" onSubmit={handleSubmit(onSubmited)}>
             <ThemeProvider theme={darkTheme}>
               <TextFildStyle
@@ -106,7 +111,9 @@ const Login = ({ setUser, setIsAuthorized, user }) => {
               <ButtonStyled type="submit">login</ButtonStyled>
             </ThemeProvider>
           </form>
-          {}
+          {showErrorCadastred && (
+            <p className="errorCadastred">Usuário não cadastrado*</p>
+          )}
         </Box>
       </ContainerForm>
     </ContainerPage>

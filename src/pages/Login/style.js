@@ -5,7 +5,7 @@ import { TextField } from "@mui/material";
 export const ContainerForm = styled(Paper)`
   height: 600px;
   max-width: 800px;
-  width: 90%;
+  width: 98%;
   line-height: 60px;
   background: "rgb(26,26,26)";
   background: linear-gradient(
@@ -23,21 +23,31 @@ export const ContainerForm = styled(Paper)`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    align-items: center;
+    padding: 0 5px;
 
     p {
       display: block;
       max-width: 400px;
     }
   }
+  p {
+    color: red;
+  }
 `;
 
 export const TextFildStyle = styled(TextField)`
+  max-width: 600px;
+  width: 100%;
   .MuiOutlinedInput-root {
     box-sizing: border-box;
     border-radius: 15px;
     background: #1a1a1a;
     color: white;
-    width: 500px;
+    width: 100%;
+    &:hover fieldset {
+      border-color: white;
+    }
   }
   .Mui-focused {
     border: none;
